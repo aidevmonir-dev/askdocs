@@ -1,0 +1,93 @@
+/* AskDocs. Devomio colours: navy ink, coral action. A working tool, so the layout stays quiet. */
+:root {
+  --navy: #213343;
+  --coral: #ff7a59;
+  --coral-dark: #e8603f;
+  --ink: #1c2b39;
+  --muted: #5b6b7b;
+  --line: #d9e0e6;
+  --page: #f5f7f9;
+  --panel: #ffffff;
+  --quote: #fff4ef;
+  --display: "Sora", "Segoe UI", Arial, sans-serif;
+  --text: "Inter", "Segoe UI", Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--text); font-size: 1rem; line-height: 1.55; display: flex; flex-direction: column; }
+a { color: var(--navy); text-underline-offset: 0.15em; }
+button { font: inherit; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; border-radius: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.bar { display: flex; align-items: center; gap: 1rem; padding: 0.7rem 1.25rem; background: var(--panel); border-bottom: 1px solid var(--line); }
+.product { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--display); font-weight: 700; font-size: 1.15rem; color: var(--navy); text-decoration: none; }
+.by { margin: 0 auto 0 0; font-size: 0.9rem; color: var(--muted); }
+.repo { font-size: 0.9rem; font-weight: 600; }
+
+.layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr); }
+.side { padding: 2rem 1.5rem; border-right: 1px solid var(--line); background: var(--panel); overflow-y: auto; }
+.side h1 { font-family: var(--display); font-size: 1.55rem; line-height: 1.2; margin: 0 0 0.8rem; color: var(--navy); }
+.side h2 { font-family: var(--display); font-size: 0.98rem; margin: 2rem 0 0.6rem; color: var(--navy); }
+.intro { margin: 0 0 1.5rem; color: var(--muted); }
+
+.btn { border: 0; border-radius: 8px; background: var(--coral); color: #fff; font-weight: 700; padding: 0.7rem 1.1rem; cursor: pointer; }
+.btn:hover { background: var(--coral-dark); }
+.btn:disabled { opacity: 0.55; cursor: progress; }
+
+.drop { border: 1.5px dashed var(--line); border-radius: 10px; padding: 1.1rem; background: var(--page); }
+.drop.over { border-color: var(--coral); background: var(--quote); }
+.hint { margin: 0.7rem 0 0; font-size: 0.86rem; color: var(--muted); }
+.status { margin: 0.6rem 0 0; font-size: 0.9rem; font-weight: 600; min-height: 1.3em; }
+.status.bad { color: #b3261e; }
+.status.good { color: #1b6e4b; }
+
+.docs { list-style: none; margin: 0; padding: 0; }
+.docs li { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); font-size: 0.93rem; }
+.docs .doc-name { flex: 1; min-width: 0; overflow-wrap: anywhere; font-weight: 600; }
+.docs .doc-meta { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+.docs button { border: 0; background: none; color: var(--muted); cursor: pointer; text-decoration: underline; font-size: 0.82rem; padding: 0.2rem; }
+.docs button:hover { color: #b3261e; }
+.privacy { margin: 1.5rem 0 0; font-size: 0.84rem; color: var(--muted); }
+
+.chat { display: flex; flex-direction: column; min-height: 0; }
+.banner { margin: 0; padding: 0.7rem 1.5rem; background: #fff8e1; border-bottom: 1px solid #f0dfa6; font-size: 0.9rem; }
+.thread { flex: 1; overflow-y: auto; padding: 2rem clamp(1rem, 4vw, 3rem); }
+.empty { max-width: 40rem; margin: 6vh auto 0; }
+.empty-title { font-family: var(--display); font-size: 1.15rem; color: var(--navy); margin: 0 0 1rem; }
+.starters { display: grid; gap: 0.6rem; }
+.starter { text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 1rem; cursor: pointer; color: var(--ink); }
+.starter:hover { border-color: var(--coral); }
+
+.turn { max-width: 46rem; margin: 0 auto 1.75rem; }
+.q { font-weight: 700; color: var(--navy); margin: 0 0 0.5rem; font-size: 1.05rem; }
+.a { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; }
+.a p { margin: 0; white-space: pre-wrap; }
+.a .notice { margin-top: 0.8rem; font-size: 0.88rem; color: var(--muted); }
+.mark { display: inline-flex; align-items: center; justify-content: center; min-width: 1.45rem; height: 1.45rem; margin: 0 0.12rem; padding: 0 0.3rem; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font-size: 0.74rem; font-weight: 700; cursor: pointer; vertical-align: 0.1em; }
+.mark:hover, .mark[aria-expanded="true"] { background: var(--coral); }
+.sources { list-style: none; margin: 1rem 0 0; padding: 0.9rem 0 0; border-top: 1px solid var(--line); display: grid; gap: 0.6rem; }
+.sources li { font-size: 0.9rem; }
+.src-head { display: flex; gap: 0.5rem; align-items: baseline; width: 100%; text-align: left; border: 0; background: none; padding: 0; cursor: pointer; color: var(--ink); }
+.src-num { flex: none; font-weight: 700; color: var(--coral-dark); }
+.src-where { font-weight: 600; text-decoration: underline; text-decoration-color: var(--line); }
+.src-quote { margin: 0.45rem 0 0 1.4rem; padding: 0.6rem 0.8rem; background: var(--quote); border-left: 3px solid var(--coral); border-radius: 0 6px 6px 0; white-space: pre-wrap; }
+.thinking { color: var(--muted); }
+.thinking::after { content: ""; display: inline-block; width: 1.2em; text-align: left; animation: dots 1.2s steps(4, end) infinite; }
+@keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+
+.composer { display: flex; gap: 0.6rem; padding: 0.9rem clamp(1rem, 4vw, 3rem) 1.2rem; background: var(--panel); border-top: 1px solid var(--line); }
+.composer textarea { flex: 1; resize: none; max-height: 8rem; font: inherit; padding: 0.7rem 0.9rem; border: 1.5px solid var(--line); border-radius: 8px; color: var(--ink); background: #fff; }
+.composer textarea:focus { outline: none; border-color: var(--coral); }
+
+@media (max-width: 52rem) {
+  html, body { height: auto; }
+  .layout { grid-template-columns: 1fr; }
+  .side { border-right: 0; border-bottom: 1px solid var(--line); padding: 1.5rem 1rem; }
+  .by { display: none; }
+  .product { margin-right: auto; }
+  .thread { overflow: visible; padding: 1.5rem 1rem; }
+  .empty { margin-top: 0; }
+  .composer { position: sticky; bottom: 0; padding: 0.7rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) { .thinking::after { animation: none; content: "..."; } }

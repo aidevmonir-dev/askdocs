@@ -1,0 +1,68 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AskDocs | Ask questions about your documents, with sources</title>
+<meta name="description" content="Upload a PDF and ask questions in plain language. Every answer shows the exact passage and page it came from. An open-source RAG demo by Devomio.">
+<link rel="icon" type="image/svg+xml" href="{% static 'rag/icon.svg' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'rag/app.css' %}">
+</head>
+<body>
+<header class="bar">
+  <a class="product" href="/">
+    <img src="{% static 'rag/icon.svg' %}" width="30" height="30" alt="">
+    <span>AskDocs</span>
+  </a>
+  <p class="by">A demo by <a href="https://devomio.com/" rel="noopener">Devomio</a></p>
+  <a class="repo" href="{{ repo_url }}" rel="noopener">Source on GitHub</a>
+</header>
+
+<main class="layout">
+  <aside class="side" aria-label="Your documents">
+    <h1>Ask your documents. See where each answer comes from.</h1>
+    <p class="intro">Upload a PDF, then ask a question in plain language. Every answer links to the exact passage and page it was taken from.</p>
+
+    <form id="upload" class="drop" novalidate>
+      <input type="file" id="file" name="file" accept=".pdf,.txt,.md" hidden>
+      <button type="button" class="btn" id="pick">Upload a document</button>
+      <p class="hint">PDF, .txt or .md. Up to {{ max_mb }} MB and {{ max_pages }} pages. You can also drop a file here.</p>
+      <p class="status" id="upload-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <h2>Documents in this chat</h2>
+    <ul class="docs" id="docs" aria-live="polite"></ul>
+
+    <p class="privacy">Only the extracted text is kept, the uploaded file is not stored. Your documents are visible only in this browser and are deleted after {{ retention_hours }} hours.</p>
+  </aside>
+
+  <section class="chat" aria-label="Chat">
+    {% if not ai_enabled %}
+    <p class="banner">No AI model is connected to this copy, so it shows the matching passages without writing an answer. Add an API key to turn answers on.</p>
+    {% endif %}
+    <div class="thread" id="thread" aria-live="polite">
+      <div class="empty" id="empty">
+        <p class="empty-title">Try the sample handbook, or upload your own file.</p>
+        <div class="starters" id="starters">
+          <button type="button" class="starter">How many days of annual leave do I get?</button>
+          <button type="button" class="starter">What is the hotel limit when travelling to Zurich?</button>
+          <button type="button" class="starter">What should I do if my laptop is stolen?</button>
+          <button type="button" class="starter">Does the handbook say anything about company cars?</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="ask" class="composer" novalidate>
+      <label class="sr" for="question">Your question</label>
+      <textarea id="question" rows="1" maxlength="600" placeholder="Ask a question about the documents" required></textarea>
+      <button type="submit" class="btn" id="send">Ask</button>
+    </form>
+  </section>
+</main>
+
+<script src="{% static 'rag/app.js' %}" defer></script>
+</body>
+</html>
