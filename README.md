@@ -1,5 +1,9 @@
 # AskDocs
 
+**Live demo: [askdocs.devomio.com](https://askdocs.devomio.com/)**
+
+![Screenshot of the live demo](docs/screenshot.png)
+
 Ask questions about your own documents and see exactly where each answer comes from.
 
 Upload a PDF, ask in plain language, and AskDocs answers using only that document. Every statement
